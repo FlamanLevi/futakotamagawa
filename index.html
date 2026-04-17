@@ -6,77 +6,78 @@
     <title>Futakotamagawa ES - English Lab</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f7f9fc;
-            color: #333;
+            background-color: #f4f7f6;
+            color: #2c3e50;
             text-align: center;
         }
         header {
             background-color: #2c3e50;
             color: white;
-            padding: 40px 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 50px 20px;
+            border-bottom: 5px solid #3498db;
         }
         h1 {
             margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 1px;
+            font-size: 2.2rem;
+            font-weight: 700;
         }
         h2 {
             margin: 10px 0 0 0;
-            font-size: 1.2rem;
-            font-weight: 300;
+            font-size: 1.1rem;
+            font-weight: 400;
             color: #bdc3c7;
         }
         .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
         }
-        p.welcome {
+        .instruction {
             font-size: 1.2rem;
-            color: #7f8c8d;
             margin-bottom: 40px;
+            color: #7f8c8d;
         }
         .grade-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
         }
         .grade-button {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 35px 20px;
             background-color: white;
-            border: 2px solid #e0e6ed;
-            border-radius: 15px;
+            border-radius: 20px;
             text-decoration: none;
             color: #2c3e50;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
         }
         .grade-button:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
             border-color: #3498db;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
         }
-        .grade-number {
-            font-size: 3rem;
+        .en-label {
+            font-size: 1.8rem;
             font-weight: bold;
             color: #3498db;
+            margin-bottom: 5px;
         }
-        .grade-label {
+        .jp-label {
             font-size: 1.2rem;
             font-weight: 600;
-            margin-top: 10px;
+            color: #34495e;
         }
         footer {
-            margin-top: 60px;
-            padding: 20px;
+            margin-top: 80px;
+            padding-bottom: 40px;
             font-size: 0.9rem;
             color: #95a5a6;
         }
@@ -90,28 +91,27 @@
 </header>
 
 <div class="container">
-    <p class="welcome">Select a grade to start the Bingo Machine</p>
+    <p class="instruction">Select your grade / 学年を選択してください</p>
     
     <div class="grade-grid">
-        <!-- We link each button to bingo.html -->
         <a href="bingo.html" class="grade-button">
-            <span class="grade-number">3</span>
-            <span class="grade-label">Grade 3</span>
+            <span class="en-label">Grade 3</span>
+            <span class="jp-label">3年生</span>
         </a>
 
         <a href="bingo.html" class="grade-button">
-            <span class="grade-number">4</span>
-            <span class="grade-label">Grade 4</span>
+            <span class="en-label">Grade 4</span>
+            <span class="jp-label">4年生</span>
         </a>
 
         <a href="bingo.html" class="grade-button">
-            <span class="grade-number">5</span>
-            <span class="grade-label">Grade 5</span>
+            <span class="en-label">Grade 5</span>
+            <span class="jp-label">5年生</span>
         </a>
 
         <a href="bingo.html" class="grade-button">
-            <span class="grade-number">6</span>
-            <span class="grade-label">Grade 6</span>
+            <span class="en-label">Grade 6</span>
+            <span class="jp-label">6年生</span>
         </a>
     </div>
 </div>
