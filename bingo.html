@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Machine</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #ecf0f1; text-align: center; padding: 10px; color: #2c3e50; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .hidden { display: none; }
+        .unit-card { background: #3498db; color: white; padding: 15px; border-radius: 12px; cursor: pointer; margin-bottom: 10px; font-weight: bold; }
+        #display-word { font-size: 60px; font-weight: bold; color: #2c3e50; min-height: 120px; display: flex; align-items: center; justify-content: center; border: 4px dashed #3498db; border-radius: 20px; margin: 15px 0; background: #f9f9f9; padding: 10px; }
+        .btn-orange { background: #e67e22; color: white; font-size: 24px; width: 100%; border: none; padding: 15px; border-radius: 10px; cursor: pointer; font-weight: bold; }
+        #history { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; font-size: 14px; margin-top: 15px; }
+        .history-item { background: #dcdde1; padding: 3px 8px; border-radius: 4px; }
+        #recommendation { background: #f1c40f; padding: 5px 10px; border-radius: 5px; font-weight: bold; margin-bottom: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 id="grade-title">Loading...</h2>
+    
+    <!-- Screen 1: Unit Selection -->
+    <div id="unit-selection">
+        <p>Select a Unit:</p>
+        <div id="unit-list"></div>
+    </div>
+
+    <!-- Screen 2: Game -->
+    <div id="game-screen" class="hidden">
+        <h3 id="unit-header"></h3>
+        <div id="recommendation"></div>
+        <div id="display-word">Ready?</div>
+        <button id="draw-btn" class="btn-orange" onclick="drawWord()">DRAW</button>
+        <div id="history"></div>
+        <br>
+        <button onclick="location.reload()" style="background:none; border:none; color:#95a5a6; cursor:pointer;">← Back to Units</button>
+    </div>
+</div>
+
+<script>
+    let allData = {};
+    let currentPool = [];
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedGrade = urlParams.get('grade'); // e.g. "grade5"
+
+    // FETCH the JSON file from your GitHub
+    fetch('vocabulary.json')
+        .then(response => response.json())
+        .then(data => {
+            allData = data[selectedGrade];
+            document.getElementById('grade-title').innerText = selectedGrade.replace('grade', 'Grade ') + " Bingo";
+            renderUnits();
+        })
+        .catch(err => {
+            document.getElementById('grade-title').innerText = "Error loading vocabulary.";
+            console.error(err);
+        });
+
+    function renderUnits() {
+        const list = document.getElementById('unit-list');
+        for (let unitName in allData) {
+            const div = document.createElement('div');
+            div.className = 'unit-card';
+            div.innerText = unitName;
+            div.onclick = () => startGame(unitName);
+            list.appendChild(div);
+        }
+    }
+
+    function startGame(name) {
+        document.getElementById('unit-selection').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('unit-header').innerText = name;
+        
+        currentPool = [...allData[name]];
+        const count = currentPool.length;
+        let rec = count >= 25 ? "5x5" : (count >= 16 ? "4x4" : "3x3");
+        document.getElementById('recommendation').innerText = `Grid size: ${rec}`;
+    }
+
+    function drawWord() {
+        if (currentPool.length === 0) {
+            document.getElementById('display-word').innerText = "Finished!";
+            return;
+        }
+        const idx = Math.floor(Math.random() * currentPool.length);
+        const word = currentPool.splice(idx, 1)[0];
+        document.getElementById('display-word').innerText = word;
+        
+        const span = document.createElement('span');
+        span.className = 'history-item';
+        span.innerText = word;
+        document.getElementById('history').appendChild(span);
+    }
+</script>
+</body>
+</html>
