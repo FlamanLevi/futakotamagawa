@@ -13,6 +13,9 @@
   },
   "grade6": {
     "Unit 1: Countries": ["Australia", "Azerbaijan", "Brazil", "Canada", "Chile", "China", "Egypt", "Finland", "France", "Germany", "India", "Italy", "Japan", "Kenya", "Korea", "New Zealand", "Norway", "Peru", "Russia", "Saudi Arabia", "South Africa", "Thailand", "the Maldives", "the Philippines", "the U.K.", "the U.S."],
-    "Unit 2: Skills": ["singing", "cooking", "swimming", "running", "dancing", "fishing", "sports", "kendama", "sewing", "jumping rope", "riding a unicycle", "drawing pictures", "making sweets", "playing the piano", "playing the recorder", "playing video games"]
+    "Unit 2: Skills": ["singing", "cooking", "swimming", "running", "dancing", "fishing", "sports", "kendama", "sewing", "jumping rope", "riding a unicycle", "drawing pictures", "making sweets", "playing the piano", "playing the recorder", "playing video games"],
+    "Unit 3: Seasons": ["spring", "summer", "fall", "winter"],
+    "Unit 4: Months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    "Unit 5: Seasonal Events": ["hanami", "the Doll Festival", "Children's Day", "the Star Festival", "a summer festival", "a fireworks festival", "tsukimi", "momijigari", "shichi-go-san", "oshogatsu", "setsubun", "a snow festival"]
   }
 }
